@@ -6,7 +6,7 @@ import '../helpers/Ownable-05.sol';
 contract AlienCodex is Ownable {
 
   bool public contact;
-  bytes32[] public codex;
+  bytes32[] public codex; //codex is bytes32 slice
 
   modifier contacted() {
     assert(contact);

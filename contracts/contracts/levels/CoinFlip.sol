@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
-import '@openzeppelin/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts/utils/math/SafeMath.sol';
 
 contract CoinFlip {
 
@@ -10,14 +10,14 @@ contract CoinFlip {
   uint256 lastHash;
   uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
-  constructor() public {
+  constructor() {
     consecutiveWins = 0;
   }
 
   function flip(bool _guess) public returns (bool) {
     uint256 blockValue = uint256(blockhash(block.number.sub(1)));
 
-    if (lastHash == blockValue) {
+    if (lastHash == blockValue) {  //防止连续在同一块猜
       revert();
     }
 

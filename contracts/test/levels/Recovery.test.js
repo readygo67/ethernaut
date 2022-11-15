@@ -64,7 +64,7 @@ contract('Recovery', function(accounts) {
     //console.log('completed:', completed)
     assert.equal(completed, false)
 
-    // The solution
+    // The solutions
     // We find the address and call suicide. 
     //console.log('Performing attack');
     let generatedTokenAddress = targetAddress(instance.address,1);

@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import '@openzeppelin/contracts/math/SafeMath.sol';
+import '@openzeppelin/contracts@3.3/math/SafeMath.sol';
+import 'hardhat/console.sol';
 
 contract Reentrance {
   
@@ -17,6 +18,7 @@ contract Reentrance {
   }
 
   function withdraw(uint _amount) public {
+    console.log("withdraw %s from %s", _amount, msg.sender);
     if(balances[msg.sender] >= _amount) {
       (bool result,) = msg.sender.call{value:_amount}("");
       if(result) {
